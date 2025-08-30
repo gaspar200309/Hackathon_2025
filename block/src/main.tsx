@@ -1,7 +1,7 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import App from './App'
+import './index.css';
 import { hardhat } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
