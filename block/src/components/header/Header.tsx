@@ -1,13 +1,12 @@
 import { injected, useAccount, useConnect, useDisconnect } from "wagmi";
 
-
 function Header() {
   const { address, isConnected } = useAccount();
   const { connect } = useConnect();
   const { disconnect } = useDisconnect();
 
   return (
-    <header className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg">
+    <header className="bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <div className="bg-white p-2 rounded-full">
@@ -45,4 +44,5 @@ function Header() {
     </header>
   );
 }
+
 export default Header;
