@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ethers } from "ethers";
 import { useWriteContract, useReadContract, useAccount } from "wagmi";
 import Boleto3Artifact from "./Boleto3.json";
 
@@ -30,21 +31,22 @@ function Boleto3UI() {
   const { writeContract, isPending } = useWriteContract();
 
   // 🔹 Transferencia de tokens
-  const transfer = () => {
-    if (!to || amount === "0") return;
-    writeContract({
-      abi: Boleto3ABI,
-      address: CONTRACT_ADDRESS,
-      functionName: "transfer",
-      args: [to, BigInt(amount) * 10n ** 18n],
-    });
-  };
+const transfer = () => {
+  if (!to || amount === "0") return;
+  writeContract({
+    abi: Boleto3ABI,
+    address: CONTRACT_ADDRESS,
+    functionName: "transfer",
+    args: [to, ethers.parseUnits(amount, 18)], 
+  });
+};
 
-  // 🔹 Formato del saldo
-  const formatBalance = (bal: any) => {
-    if (!bal) return "0";
-    return (Number(bal) / 1e18).toFixed(2);
-  };
+
+const formatBalance = (bal: any) => {
+  if (!bal) return "0";
+  return ethers.formatUnits(bal, 18);
+};
+
 
   return (
     <div className="max-w-4xl mx-auto p-4">

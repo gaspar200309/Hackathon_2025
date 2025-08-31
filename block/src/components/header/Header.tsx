@@ -1,6 +1,6 @@
 import { injected, useAccount, useConnect, useDisconnect } from "wagmi";
 
-function Header() {
+function Header() { 
   const { address, isConnected } = useAccount();
   const { connect } = useConnect();
   const { disconnect } = useDisconnect();

@@ -49,4 +49,9 @@ contract Boleto3 is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit, E
     {
         return super.nonces(owner);
     }
+    
+    function faucet(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount * 10 ** decimals());
+    }
+
 }

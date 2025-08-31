@@ -1,5 +1,4 @@
 import type { HardhatUserConfig } from "hardhat/config";
-
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
 import { configVariable } from "hardhat/config";
 
@@ -35,6 +34,12 @@ const config: HardhatUserConfig = {
       chainType: "l1",
       url: configVariable("SEPOLIA_RPC_URL"),
       accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+    },
+    liskSepolia: {
+      type: "http",
+      chainType: "op", // porque Lisk es L2 con OP Stack
+      url: "https://rpc.sepolia-api.lisk.com",
+      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")], // puedes usar el mismo o crear otro
     },
     localhost: {
       type: "http",

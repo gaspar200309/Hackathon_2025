@@ -2,15 +2,17 @@ import ReactDOM from "react-dom/client";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import App from './App'
 import './index.css';
-import { hardhat } from "wagmi/chains";
+import { liskSepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
 const config = createConfig({
-  chains: [hardhat], 
+  chains: [liskSepolia],
   transports: {
-    [hardhat.id]: http("http://127.0.0.1:8545"), // RPC de Hardhat local
+    [liskSepolia.id]: http("https://rpc.sepolia-api.lisk.com"),
   },
 });
+
 
 const queryClient = new QueryClient();
 
